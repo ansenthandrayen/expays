@@ -21,6 +21,12 @@ export class FavoritesService {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.codes()));
   }
 
+  reset(): void {
+    if (!confirm("Vider tous les favoris ?")) return;
+    this.codes.set([]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+  }
+
   private load(): string[] {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
