@@ -15,6 +15,7 @@ Projet réalisé en une journée pour découvrir Angular moderne (composants sta
 - 🌐 Filtre par région (Europe, Asie, Afrique...)
 - 📄 Page détail par pays (capitale, population, superficie, région)
 - ⭐ Favoris persistants (localStorage), avec tri automatique en tête de liste
+- 🗑️ Bouton pour vider tous les favoris d'un coup _(implémenté en autonomie, sans guide pas à pas)_
 - 📱 Interface responsive
 
 ## Stack technique
