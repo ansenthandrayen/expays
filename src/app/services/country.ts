@@ -30,7 +30,10 @@ function toCountry(api: ApiCountry): Country {
     subregion: api.subregion,
     population: api.population,
     area: api.area?.kilometers,
-    flags: { png: api.flag.url_png, alt: api.flag.description },
+    flags: {
+      png: api.flag.url_png.replace("/w640/", "/w160/"),
+      alt: api.flag.description,
+    },
   };
 }
 
