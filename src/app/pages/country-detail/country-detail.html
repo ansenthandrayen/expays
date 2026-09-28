@@ -1,0 +1,39 @@
+<main class="page">
+  <a routerLink="/" class="back">← Retour à la liste</a>
+
+  @if (loading()) {
+  <p class="message">Chargement...</p>
+  } @else if (error()) {
+  <p class="message error">{{ error() }}</p>
+  } @else if (country(); as c) {
+  <article class="detail">
+    <img
+      class="detail-flag"
+      [src]="c.flags.png"
+      [alt]="c.flags.alt ?? c.name.common"
+    />
+
+    <div>
+      <h1>{{ c.name.common }}</h1>
+
+      <ul class="info">
+        <li>Nom officiel : {{ c.name.official ?? 'Non renseigné' }}</li>
+        <li>Capitale : {{ c.capital?.join(', ') ?? 'Non renseignée' }}</li>
+        <li>
+          Région : {{ c.region }}{{ c.subregion ? ' (' + c.subregion + ')' : ''
+          }}
+        </li>
+        <li>Population : {{ c.population | number }}</li>
+        @if (c.area) {
+        <li>Superficie : {{ c.area | number }} km²</li>
+        }
+      </ul>
+
+      <button type="button" class="btn" (click)="favorites.toggle(c.cca3)">
+        {{ favorites.isFavorite(c.cca3) ? '★ Retirer des favoris' : '☆ Ajouter
+        aux favoris' }}
+      </button>
+    </div>
+  </article>
+  }
+</main>

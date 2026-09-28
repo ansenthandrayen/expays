@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.message {
+  color: var(--muted);
+}
+.error {
+  color: #b91c1c;
+}
+
+/* Barre de recherche et filtre */
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.filters input {
+  flex: 1 1 240px;
+}
+input,
+select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--card);
+}
+.count {
+  color: var(--muted);
+}
+
+/* Grille de cartes */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.flag {
+  width: 100%;
+  height: 110px;
+  object-fit: contain;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+.card a {
+  font-weight: 600;
+}
+.region {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.fav {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #d97706;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Page détail */
+.back {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.detail-flag {
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  align-self: flex-start;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.info {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+.info li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}

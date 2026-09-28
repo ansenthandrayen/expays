@@ -1,0 +1,52 @@
+<main class="page">
+  <h1>Explorateur de pays</h1>
+
+  @if (loading()) {
+  <p class="message">Chargement...</p>
+  } @else if (error()) {
+  <p class="message error">{{ error() }}</p>
+  } @else {
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Rechercher un pays..."
+      [formControl]="searchControl"
+    />
+
+    <select [formControl]="regionControl">
+      <option value="">Toutes les régions</option>
+      @for (r of regions(); track r) {
+      <option [value]="r">{{ r }}</option>
+      }
+    </select>
+  </div>
+
+  <p class="count">
+    {{ filteredCountries().length }} pays · {{ favorites.count() }} favori(s)
+  </p>
+
+  <ul class="grid">
+    @for (country of filteredCountries(); track country.cca3) {
+    <li class="card">
+      <button
+        type="button"
+        class="fav"
+        (click)="favorites.toggle(country.cca3)"
+        [attr.aria-label]="favorites.isFavorite(country.cca3) ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+      >
+        {{ favorites.isFavorite(country.cca3) ? '★' : '☆' }}
+      </button>
+      <img
+        class="flag"
+        [src]="country.flags.png"
+        [alt]="country.flags.alt ?? country.name.common"
+      />
+      <a [routerLink]="['/country', country.cca3]">{{ country.name.common }}</a>
+      <span class="region">{{ country.region }}</span>
+    </li>
+    } @empty {
+    <li class="message">Aucun pays trouvé.</li>
+    }
+  </ul>
+  }
+</main>
