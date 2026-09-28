@@ -1,59 +1,75 @@
-# ExplorateurPays
+# 🌍 Explorateur de pays
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Mini-application Angular permettant de rechercher, filtrer et consulter des informations sur les pays du monde, avec un système de favoris persistant.
 
-## Development server
+Projet réalisé en une journée pour découvrir Angular moderne (composants standalone, signals) avant un entretien technique.
 
-To start a local development server, run:
+## Aperçu
+
+![Liste des pays](docs/liste.png)
+![Détail d'un pays](docs/detail.png)
+
+## Fonctionnalités
+
+- 🔍 Recherche de pays par nom (en temps réel)
+- 🌐 Filtre par région (Europe, Asie, Afrique...)
+- 📄 Page détail par pays (capitale, population, superficie, région)
+- ⭐ Favoris persistants (localStorage), avec tri automatique en tête de liste
+- 📱 Interface responsive
+
+## Stack technique
+
+- **Angular** (composants standalone, signals, nouvelle syntaxe de contrôle `@if` / `@for`)
+- **TypeScript** (interfaces, typage strict)
+- **RxJS** (Observables, `map`, `forkJoin`)
+- **Formulaires réactifs** (`FormControl`, `toSignal`)
+- **Angular Router** (routes avec paramètres)
+- **API** : [REST Countries](https://restcountries.com/) (v5)
+- **CSS** natif (variables CSS, grid responsive)
+
+## Installation
+
+```bash
+git clone https://github.com/ansenthandrayen/explorateur-pays.git
+cd explorateur-pays
+npm install
+```
+
+Ce projet nécessite une clé d'API gratuite (REST Countries v5 impose une authentification).
+
+1. Créer un compte sur https://restcountries.com/sign-up
+2. Récupérer la clé sur https://restcountries.com/api-keys et ajouter `localhost` dans les origines autorisées
+3. Copier `src/app/api-key.example.ts` en `src/app/api-key.ts` et y coller la clé :
+
+```ts
+export const API_KEY = "ta_cle_ici";
+```
+
+## Lancer le projet
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Puis ouvrir http://localhost:4200
 
-## Code scaffolding
+## Ce que j'ai appris
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- La différence entre composants standalone et NgModules
+- Le fonctionnement des signals (`signal`, `computed`) face au changement d'état
+- Les Observables RxJS et l'abonnement (`subscribe`), différents d'une Promise
+- Les formulaires réactifs (`FormControl`, `valueChanges`)
+- Le routing Angular avec paramètres de route
+- Lire et déboguer des erreurs HTTP (CORS, 401, 403) à partir de la console navigateur
+- Adapter un projet en cours de route suite à une migration d'API (v3.1 → v5, dépréciée en cours de développement)
 
-```bash
-ng generate component component-name
-```
+## Limites connues / pistes d'amélioration
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- La clé d'API est visible côté client (limite inhérente à une clé publique sans backend) ; une vraie mise en production passerait par un petit serveur proxy
+- Les 3 requêtes de la liste complète sont codées en dur (pagination simple), plutôt que de suivre dynamiquement `meta.more`
+- Tests unitaires minimaux (un test sur le service de favoris)
+- Pas de gestion i18n / formats régionaux (nombres affichés en format anglais)
 
-```bash
-ng generate --help
-```
+## Auteur
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ansen — [github.com/ansenthandrayen](https://github.com/ansenthandrayen)
