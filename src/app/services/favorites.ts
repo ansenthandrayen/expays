@@ -1,6 +1,6 @@
 import { computed, Injectable, signal } from "@angular/core";
 
-const STORAGE_KEY = "explorateur-pays-favoris";
+const STORAGE_KEY = "expays-favoris";
 
 @Injectable({ providedIn: "root" })
 export class FavoritesService {

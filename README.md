@@ -1,4 +1,4 @@
-# 🌍 Explorateur de pays
+# 🌍 ExPays
 
 Mini-application Angular permettant de rechercher, filtrer et consulter des informations sur les pays du monde, avec un système de favoris persistant.
 
@@ -31,8 +31,8 @@ Projet réalisé en une journée pour découvrir Angular moderne (composants sta
 ## Installation
 
 ```bash
-git clone https://github.com/ansenthandrayen/explorateur-pays.git
-cd explorateur-pays
+git clone https://github.com/ansenthandrayen/expays.git
+cd expays
 npm install
 ```
 
